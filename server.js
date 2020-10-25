@@ -1,13 +1,18 @@
 var express = require("express");
 var fs = require("fs");
 var app = express();
-var PORT = 3500;
+var PORT = process.env.PORT || 3500;
+const path = require("path")
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use(express.static('public'));
 
-var notes = require("./db.json")
+var notes = require("./db/db.json")
+
+app.get("/", function(req, res){
+  res.sendFile(path.join(__dirname,'', 'notes.html'))
+})
 
 app.post("/:notes", function(req,res) {
   const newNotes = req.body

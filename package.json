@@ -2,15 +2,16 @@
   "name": "not_taker",
   "version": "1.0.0",
   "description": "## Description",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
-    "express": "^4.17.1",
-    "inquirer": "^7.3.3"
+    "express": "^4.17.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
   "scripts": {
-    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
     "watch": "nodemon server.js"
   },
   "repository": {
