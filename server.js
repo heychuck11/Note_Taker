@@ -11,17 +11,24 @@ app.use(express.static('public'));
 var notes = require("./db/db.json")
 
 app.get("/", function(req, res){
-  res.sendFile(path.join(__dirname,'', 'notes.html'))
+  res.sendFile(path.join(__dirname,'', 'public/index.html'))
 })
 
-app.post("/:notes", function(req,res) {
+app.get("/notes", function(req, res){
+  res.sendFile(path.join(__dirname,'', 'public/notes.html'))
+})
+
+app.post("/notes", function(req,res) {
+  req.body
   const newNotes = req.body
   notes.push(newNotes)
   fs.writeFile("db.json", JSON.stringify(notes), function(err){
-    res.send("new notes added");
-    res.end;
+  res.send(req.body.notes);
+  res.end;
   })
 })
+
+
 
 
 
